@@ -1,0 +1,22 @@
+﻿@model MyFirstStore.ViewModels.UserLogin
+
+<span class="text">Вход в учетную запись</span>
+<form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+    <div class="editBox">
+        <div>
+            <label asp-for="Name" class="labelWidth">Логин</label>
+            <input asp-for="Name" class="inputWidth" pattern="[A-Za-z0-9]{3,25}" placeholder="3-25 только латиница и цифры" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Password" class="labelWidth">Пароль</label>
+            <input asp-for="Password" class="inputWidth" required pattern="[A-Za-z0-9!@@#$%^&*]{5,25}" placeholder="5-25 букв, цифр, символов" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="RememberMe" class="labelWidth">Запомнить</label>
+            <input asp-for="RememberMe" />
+        </div>
+            <input type="submit" class="editButton" value="Войти" />
+    </div>
+</form>

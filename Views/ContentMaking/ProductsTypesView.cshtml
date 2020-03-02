@@ -1,0 +1,35 @@
+﻿@model MyFirstStore.ViewModels.ProductTypeMiniAndFilters;
+<div class="editBox">
+    <a class="editButton" asp-action="NewProductsTypes" asp-controller="ContentMaking">Новый тип</a>
+</div>
+<sort-buttons filters="@Model.Filters" sort-enum-array="Model.SortEnumArray"/>
+<filter-value filters="@Model.Filters" filter-desc="Родительский тип"  controller="ContentMaking" action="ProductsTypesView"/>
+
+<div class="editBox">
+    <table>
+        <thead>
+            <tr class="labelWidth  tableStyle">
+                <td>Id</td>
+                <td>Название типа</td>
+                <td>Родительский тип</td>
+                <td>Hex цвет</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.ProductTypeMinis)
+        {
+            <tr class="labelWidth  tableStyle">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.ParentProductTypeName</td>
+                <td>@item.HEXColor</td>
+                <td><a class="editButton" asp-action="DeleteProductsTypes" asp-controller="ContentMaking" asp-route-id="@item.Id">Удалить</a> </td>
+                <td><a class="editButton" asp-action="EditProductsTypes" asp-controller="ContentMaking" asp-route-id="@item.Id">Редактировать карточку</a></td>
+                <td><a class="editButton" asp-action="EditAttributesToProductTypes" asp-controller="ContentMaking" asp-route-productTypeId="@item.Id" asp-route-parentTypeId="@item.ParentProductTypeId">Задать атрибуты</a></td>
+            </tr>
+        }
+    </table>
+</div>
+    <pagination filters="@Model.Filters" />

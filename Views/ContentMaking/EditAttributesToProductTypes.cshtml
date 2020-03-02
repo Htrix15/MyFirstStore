@@ -1,0 +1,24 @@
+﻿@model List<MyFirstStore.ViewModels.ProductTypesAttributeCheck>
+@{
+    int productTypeId = Convert.ToInt32(ViewData["productTypeId"]);
+    int parentTypeId = Convert.ToInt32(ViewData["parentTypeId"]);
+}
+    <form asp-action="EditAttributesToProductTypes" asp-controller="ContentMaking" 
+          asp-route-productTypeId="@productTypeId" asp-route-parentTypeId="@parentTypeId"  method="post">
+        <div class="editBox">
+            <div asp-validation-summary="All"></div>
+            @foreach (var item in Model)
+            {
+                <div>
+                    <span class="labelWidth">@item.AttributeName</span>
+                    <input type="checkbox" name="attributesToProductsTypesIdCheck" value=@item.AttributeId
+                           @{var chek = item.Check == true ? "checked" : ""; } @chek
+                           @{var disable = item.ParentAttribute ? "disabled" : ""; } @disable />
+                </div>
+            }
+            <input class="editButton" type="submit" value="Сохранить" />
+        </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsTypesView" asp-controller="ContentMaking">Отмена</a>
+</div>

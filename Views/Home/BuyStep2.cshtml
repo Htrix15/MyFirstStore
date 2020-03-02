@@ -1,0 +1,15 @@
+﻿@model string
+
+    <div class="legendBox">
+        Код заказа:  <span class="bigTextNOrder">@Model</span><br />
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span>Номер заказа сохранен в вашем личном кабинете</span>
+        }
+        else
+        {
+            <span> Если вы перейдете по ЭТОЙ ссылке и зарегестрируетесь - заказ сохраниться в вашем личном кабинете </span><br />
+            <a asp-action="Register" class="issueButton" asp-controller="Account" asp-route-order="@Model">Зарегистрироваться!</a>
+        }
+    </div>

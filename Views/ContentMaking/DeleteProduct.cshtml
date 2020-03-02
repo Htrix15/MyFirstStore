@@ -1,0 +1,23 @@
+﻿@model MyFirstStore.ViewModels.ProductAndOrders
+
+<div class="editBox">
+    <span class="labelWidth">Удалить товар: @Model.Id - @Model.Name - @Model.ProductTypeName</span>
+    @if (Model.AllowedDelete == true)
+    {
+        <form asp-action="DeleteProduct" asp-controller="ContentMaking" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <input type="submit" class="editButton" value="Удалить!" />
+        </form>
+    }
+    else
+    {
+        <span class="labelWidth">Невозможно, т.к. есть незакрытые заказы: </span>
+        @foreach (var item in Model.Orders)
+        {
+            <span class="labelWidth">№@item</span>
+        }
+    }
+</div>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsView" asp-controller="ContentMaking">Отмена</a>
+</div>

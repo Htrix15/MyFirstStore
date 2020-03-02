@@ -1,0 +1,82 @@
+﻿@model MyFirstStore.ViewModels.OrderAndOrderPositions;
+
+    <div class="editBox">
+        <span class="labelWidth">Заказ №@Model.Order.IdOrder статус @Model.Order.OldStatus </span>
+        @if (Model.Order.IdOldStatus == 1)
+        {
+
+            <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+
+                <input type="hidden" name="IdOrder" value="@Model.Order.IdOrder" />
+                <input type="hidden" name="IdOldStatus" value="@Model.Order.IdOldStatus" />
+                <input type="hidden" name="IdNewStatus" value="2" />
+                <input type="hidden" name="OldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="NewStatus" value="Поставлен" />
+                <input type="hidden" name="CurrentPosition" value="@Model.Order.CurrentPosition" />
+                <input type="submit" class="editButton" value="Поставить" />
+            </form>
+            <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                <input type="hidden" name="IdOrder" value="@Model.Order.IdOrder" />
+                <input type="hidden" name="IdOldStatus" value="@Model.Order.IdOldStatus" />
+                <input type="hidden" name="IdNewStatus" value="3" />
+                <input type="hidden" name="OldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="NewStatus" value="Выдан" />
+                <input type="hidden" name="CurrentPosition" value="@Model.Order.CurrentPosition" />
+                <input type="submit" class="editButton" value="Выдан" />
+            </form>
+            <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                <input type="hidden" name="IdOrder" value="@Model.Order.IdOrder" />
+                <input type="hidden" name="IdOldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="IdNewStatus" value="4" />
+                <input type="hidden" name="OldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="NewStatus" value="Отменен" />
+                <input type="hidden" name="CurrentPosition" value="@Model.Order.CurrentPosition" />
+                <input type="submit" class="editButton" value="Отменен" />
+            </form>
+        }
+        @if (Model.Order.IdOldStatus == 2)
+        {
+            <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                <input type="hidden" name="IdOrder" value="@Model.Order.IdOrder" />
+                <input type="hidden" name="IdOldStatus" value="@Model.Order.IdOldStatus" />
+                <input type="hidden" name="IdNewStatus" value="3" />
+                <input type="hidden" name="OldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="NewStatus" value="Выдан" />
+                <input type="hidden" name="CurrentPosition" value="@Model.Order.CurrentPosition" />
+                <input type="submit" class="editButton" value="Выдан" />
+            </form>
+            <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                <input type="hidden" name="IdOrder" value="@Model.Order.IdOrder" />
+                <input type="hidden" name="IdOldStatus" value="@Model.Order.IdOldStatus" />
+                <input type="hidden" name="IdNewStatus" value="4" />
+                <input type="hidden" name="OldStatus" value="@Model.Order.OldStatus" />
+                <input type="hidden" name="NewStatus" value="Отменен" />
+                <input type="hidden" name="CurrentPosition" value="@Model.Order.CurrentPosition" />
+                <input type="submit" class="editButton" value="Отменен" />
+            </form>
+        }
+    </div>
+<div class="editBox">
+    <table>
+        <thead class="labelWidth tableStyle">
+            <tr>
+                <td></td>
+                <td>Название</td>
+                <td>Тип</td>
+                <td>Цена</td>
+                <td>Кол-во</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.OrderPositionsMinis)
+        {
+            <tr class="labelWidth  tableStyle">
+                <td><img src=@item.MainPicturePath width="50" /></td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductTypeName</td>
+                <td>@item.FixPrice</td>
+                <td>@item.Count</td>
+                <td><a class="editButton" asp-controller="Home" asp-action="AboutToProduct" asp-route-id=@item.ProductId asp-route-currentPozition=@Model.Order.CurrentPosition>О товаре</a></td>
+            </tr>
+        }
+    </table>
+</div>

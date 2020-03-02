@@ -1,0 +1,17 @@
+﻿@model MyFirstStore.ViewModels.UserForEdit
+@using Microsoft.AspNetCore.Identity
+
+<form asp-action="SetRoles" asp-controller="Admin">
+    <div class="editBox">
+        <span class="labelWidth">Роли пользователя @Model.Name (@Model.Email):</span>
+        <input type="hidden" name="userId" value="@Model.Id" />
+        @foreach (IdentityRole role in Model.AllRoles)
+        {
+            <div>
+                <span class="labelWidth">@role.Name</span>
+                <input type="checkbox" name="roles" value="@role.Name" @(Model.Roles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+            </div>
+        }
+        <input type="submit" class="editButton" value="Сохранить" />
+    </div>
+</form>

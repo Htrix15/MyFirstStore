@@ -1,0 +1,66 @@
+﻿@model MyFirstStore.ViewModels.ProductAndProductTypes
+
+
+    <form asp-action="EditProducts" asp-controller="ContentMaking" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All"></div>
+        <div class="editBox">
+            <input type="hidden" asp-for="Product.Id">
+            <div>
+                <span class="labelWidth">Старая картинка:</span>
+                <img src=@Model.Product.MainPicturePath width=100px /><br />
+                <input type="hidden" asp-for="Product.MainPicturePath">
+            </div>
+            <div>
+                <label class="labelWidth">Новая картинка:</label>
+                <input type="file" name="uploadedFile" accept="image/jpeg,image/png" /><br />
+            </div>
+            <div>
+                <label class="labelWidth">Тип:</label>
+                <select class="inputWidth" asp-for="Product.ProductsTypeId" asp-items="Model.ProductTypes"></select>
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.Name">Название:</label>
+                <input class="inputWidth" type="text" asp-for="Product.Name" pattern="[A-Za-z0-9а-яёА-ЯЁ ]{3,25}" required placeholder="Имя должно состоять только из букв и цифр, от 3 до 25 символов" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.Price">Цена:</label>
+                <input class="inputWidth" type="text" asp-for="Product.Price" pattern="^[0-9]*[,]?[0-9]+$" required placeholder="Десятичные числа через запятую" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.Sale">Скидка:</label>
+                <input type="checkbox" asp-for="Product.Sale" value="true" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.SalePrice">Цена по скидке:</label>
+                <input class="inputWidth" type="text" asp-for="Product.SalePrice" pattern="^[0-9]*[,]?[0-9]+$" required placeholder="Десятичные числа через запятую" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.CountToStore">Кол-во на складе:</label>
+                <input class="inputWidth" type="text" asp-for="Product.CountToStore" pattern="[0-9]+" required placeholder="Только целые числа" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.DeliveryToStoreDay">Дней для доставки на склад:</label>
+                <input class="inputWidth" type="text" asp-for="Product.DeliveryToStoreDay" pattern="[0-9]+" required placeholder="Только целые числа" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.AvailableOnRequest">Можно под заказ:</label>
+                <input type="checkbox" asp-for="Product.AvailableOnRequest" value="true" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.AvailableMaxCountOnRequest">Max кол-во для заказа:</label>
+                <input class="inputWidth" type="text" asp-for="Product.AvailableMaxCountOnRequest" pattern="[0-9]+" required placeholder="Только целые числа"><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.MainAttribute">Кратакое описание:</label>
+                <input class="inputWidth" type="text" asp-for="Product.MainAttribute" pattern=".{3,25}" required placeholder="Краткое описание должно состоять только из букв и цифр, от 3 до 30 символов" /><br />
+            </div>
+            <div>
+                <label class="labelWidth" asp-for="Product.Description">Расширенное описание:</label>
+                <textarea class="inputWidth" asp-for="Product.Description" pattern=".{3,300}" required placeholder="Описание должно состоять только из букв и цифр, от 3 до 300 символов"></textarea><br />
+            </div>
+            <input class="editButton" type="submit" value="Сохранить" />
+        </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsView" asp-controller="ContentMaking">Отмена</a>
+</div>

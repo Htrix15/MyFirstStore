@@ -1,0 +1,47 @@
+﻿@model MyFirstStore.ViewModels.ProductCardForEditAndFilters;
+<search controller="ContentMaking" action="ProductsView" filters="@Model.Filters" search-enum-array="@Model.SearchEnumArray" reset="true"/>
+<div class="editBox">
+    <a class="editButton" asp-action="NewProduct" asp-controller="ContentMaking">Новый товар</a>
+</div>
+<sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+<filter-value filters="@Model.Filters" filter-desc="Тип" controller="ContentMaking" action="ProductsView"/>
+<div class="editBox">
+        <table>
+            <thead>
+                <tr class="labelWidth  tableStyle">
+                    <td>Id</td>
+                    <td>Имя</td>
+                    <td>Тип</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            @foreach (var item in Model.ProductCards)
+            {
+            <tr class="labelWidth  tableStyle">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.ParentTypeName - @item.ProductTypeName</td>
+                <td>
+                    <a class="editButton" asp-action="DeleteProduct" asp-controller="ContentMaking" asp-route-id="@item.Id">Удалить</a>
+                </td>
+                <td>
+                    <a class="editButton" asp-action="EditProducts" asp-controller="ContentMaking" asp-route-id="@item.Id">Редактировать</a>
+                </td>
+                <td>
+                    <a class="editButton" asp-action="EditAttributesToProduct" asp-controller="ContentMaking"
+                       asp-route-id="@item.Id"
+                       asp-route-productTypeId="@item.ProductTypeId"
+                       asp-route-parentTypeId="@item.ParentTypeId">Редактировать атрибуты</a>
+                </td>
+                <td>
+                    <a class="editButton" asp-action="EditPicturesToProduct" asp-controller="ContentMaking" asp-route-id="@item.Id">Редактировать доп. картинки</a>
+                </td>
+            </tr>
+            }
+        </table>
+
+</div>
+<pagination filters="@Model.Filters" />

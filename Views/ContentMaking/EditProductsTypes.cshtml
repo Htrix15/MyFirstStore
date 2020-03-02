@@ -1,0 +1,29 @@
+﻿@model MyFirstStore.ViewModels.ProductsTypesAllAndThis
+
+    <form asp-action="EditProductsTypes" asp-controller="ContentMaking">
+        <div class="editBox">
+            <div asp-validation-summary="All"></div>
+            <input type="hidden" name="oldHEXColor" value=@Model.ProductType.HEXColor />
+            <input type="hidden" name="olpParentProductTypeId" value=@Model.ProductType.ParentProductTypeId />
+            <input type="hidden" name="Id" value=@Model.ProductType.Id />
+
+            <div>
+                <label class="labelWidth" name="Name">Название типа:</label>
+                <input class="inputWidth" type="text" name="Name" value=@Model.ProductType.Name required pattern="[A-Za-z0-9а-яёА-ЯЁ ]{3,25}" placeholder="3-25 буквы и цифры" />
+                <span asp-validation-for="ProductType.Name"></span>
+            </div>
+            <div>
+                <label class="labelWidth" name="ParentProductTypeId">Родительски тип:</label>
+                <select class="inputWidth" name="ParentProductTypeId" asp-for="ProductType.ParentProductTypeId" asp-items="Model.ProductTypes"></select>
+            </div>
+            <div>
+                <label class="labelWidth" name="HexColor">HEX цвет:</label>
+                <input class="inputWidth" type="text" name="HexColor" value=@Model.ProductType.HEXColor required pattern="[A-Fa-f0-9]{6}" placeholder="6 символов - цифры и буквы ABCDEF" />
+                <span asp-validation-for="ProductType.HEXColor"></span>
+            </div>
+            <input type="submit" class="editButton" value="Сохранить" />
+        </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsTypesView" asp-controller="ContentMaking">Отмена</a>
+</div>

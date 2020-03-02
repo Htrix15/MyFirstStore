@@ -1,0 +1,17 @@
+﻿@model MyFirstStore.ViewModels.UpdateStatus
+
+    <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="post">
+        <input type="hidden" name="IdOrder" value="@Model.IdOrder" />
+        <input type="hidden" name="IdOldStatus" value="@Model.IdOldStatus" />
+        <input type="hidden" name="IdNewStatus" value="@Model.IdNewStatus" />
+        <input type="hidden" name="OldStatus" value="@Model.OldStatus" />
+        <input type="hidden" name="NewStatus" value="@Model.NewStatus" />
+        <input type="hidden" name="CurrentPosition" value="@Model.CurrentPosition" />
+        <div class="editBox">
+            <div>
+                <span class="labelWidth">Изменить статус заказа @Model.IdOrder c @Model.OldStatus в @Model.NewStatus (да)?</span>
+                <input type="checkbox" name="YesUpdate" value="true" />
+                <input type="submit" class="editButton" value="обновить" />
+            </div>
+        </div>
+    </form>

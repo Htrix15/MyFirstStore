@@ -1,0 +1,12 @@
+﻿@model MyFirstStore.ViewModels.UserForEdit
+
+    <form asp-action="Delete" asp-controller="Admin">
+        <div class="editBox">
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <span class="labelWidth">Удалить пользователя @Model.Name (@Model.Email)? (да)</span>
+                <input type="checkbox" name="yesDelete" value="true" />
+            </div>
+            <input type="submit" class="editButton" value="Сохранить" />
+        </div>
+    </form>

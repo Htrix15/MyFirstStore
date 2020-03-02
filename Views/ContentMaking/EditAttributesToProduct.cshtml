@@ -1,0 +1,18 @@
+﻿@model List<MyFirstStore.Models.AttributesToProduct>
+
+
+    <form method="post">
+        <div class="editBox">
+            <div asp-validation-summary="ModelOnly"></div>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div>
+                    <span class="labelWidth">@Model[i].ProductsAttribute.Name</span>
+                    <input type="hidden" name="[@i].ProductsAttributeId" value="@Model[i].ProductsAttributeId" />
+                    <input type="text" class="inputWidth" name="[@i].Value" maxlength="20" placeholder="до 20 символов" value="@Model[i].Value" />
+                </div>
+             }
+            <input class="editButton" type="submit" value="Сохранить" />
+        </div>
+    </form>
+

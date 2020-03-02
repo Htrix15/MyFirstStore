@@ -1,0 +1,62 @@
+﻿@model MyFirstStore.ViewModels.ProductCardAndBasketAndFilters
+<div class="basketHead">
+    <div class="basketButton">
+        <span class="basketHeadText"> Корзина на </span>
+        <span class="basketCost basketHeadText" value="@Model.BasketCost">@Model.BasketCost</span>
+        <span class="basketHeadText"> руб.</span>
+    </div>
+    <div class="basketHeadButton">
+        <input type="button" class="visableBasket linkText" value="Просмотр" />
+        <form action="/home/BuyStep1" method="get">
+            <input type="submit" class="linkText" value="Оформить" />
+        </form>
+        <input type="button" class="DelBasket linkText" value="Очистить" />
+    </div>
+</div>
+<product-list-basket product-in-baskets="@Model.ProductsInBasket" />
+<search controller="Home" action="Search" filters="@Model.Filters" search-enum-array="@Model.SearchEnumArray" />
+<sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+<filter-value filters="@Model.Filters" filter-desc="Тип" controller="Home" action="Search" />
+
+@{
+    string backColor;
+    string border;
+    string typeName;
+    foreach (var item in Model.ProductCards)
+    {
+        {
+            backColor = "bc" + item.HexColor;
+            border = "borderProductBox" + item.HexColor;
+            typeName = item.Sale ? "Cкидка!" : item.ParentTypeName;
+        }
+        <div class="productBox @border">
+            <span class="productType @backColor">@typeName</span>
+            <img class="image" src="@item.MainPicturePath">
+            <div class="textsBox">
+                <span class="textBig">@item.Name</span>
+                <span class="textBig">@item.Price руб.</span>
+                <span class="textSmile">@item.MainAttribute</span>
+            </div>
+            <div class="buttonBox">
+                <a class="buttonOther bcDefault" asp-controller="Home" asp-action="AboutToProduct" asp-route-id=@item.Id asp-route-currentPosition=@item.CurrentPosition>Инфо</a>
+                <form asp-controller="Home" asp-action="BuyOneClick">
+                    <input type="hidden" name="id" value=@item.Id />
+                    <input type="submit" class="buttonBuy @backColor" value="Купить!" />
+                </form>
+                <form>
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="hidden" name="price" value="@item.Price" />
+                    <input type="hidden" name="name" value="@item.Name" />
+                    <input type="hidden" name="color" value="@item.HexColor" />
+                    <input type="hidden" name="picturePath" value="@item.MainPicturePath" />
+                    <input type="button" class="inBasket buttonOther bcDefault" value="В корзину" />
+                </form>
+            </div>
+        </div>
+    }
+}
+<div class="newPositions"></div>
+<load-new-value filters="@Model.Filters" class-name="loadValueSearch" />
+<pagination filters="@Model.Filters" />
+
+

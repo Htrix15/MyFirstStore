@@ -1,0 +1,24 @@
+﻿@model MyFirstStore.ViewModels.ProductTypeMiniAndBasket
+@{
+    ViewData["Title"] = "Мегамагазин";
+}
+    <div class="basketHead">
+        <div class="basketButton">
+            <span class="basketHeadText"> Корзина на </span>
+            <span class="basketCost basketHeadText" value="@Model.BasketCost">@Model.BasketCost</span>
+            <span class="basketHeadText"> руб.</span>
+        </div>
+        <div class="basketHeadButton">
+            <input type="button" class="visableBasket linkText" value="Просмотр" />
+            <form action="/home/BuyStep1" method="get">
+                <input type="submit" class="linkText" value="Оформить" />
+            </form>
+            <input type="button" class="DelBasket linkText" value="Очистить" />
+        </div>
+    </div>
+<product-list-basket product-in-baskets="@Model.ProductsInBasket" />
+<search controller="Home" action="Search" search-enum-array="@Model.SearchEnumArray" />
+<products-types-boxs l-products-types="@Model.ProductTypeMinis" />
+
+
+

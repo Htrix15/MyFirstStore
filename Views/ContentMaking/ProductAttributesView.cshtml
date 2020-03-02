@@ -1,0 +1,16 @@
+﻿@model MyFirstStore.ViewModels.ProductAttributesAndFilter;
+<div class="editBox">
+    <a class="editButton" asp-action="NewProductsAttribute" asp-controller="ContentMaking">Новый атрибут</a>
+</div>
+<sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+<table>
+    @foreach (var item in Model.ProductAttributes)
+    {
+        <tr class="labelWidth  tableStyle">
+            <td>@item.Name</td>
+            <td><a class="editButton" asp-action="DeleteProductsAttribute" asp-controller="ContentMaking" asp-route-id="@item.Id">Удалить</a> </td>
+            <td><a class="editButton" asp-action="EditProductsAttribute" asp-controller="ContentMaking" asp-route-id="@item.Id">Редактировать</a></td>
+        </tr>
+    }
+</table>
+<pagination filters="@Model.Filters" />

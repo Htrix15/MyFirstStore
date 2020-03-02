@@ -1,0 +1,55 @@
+﻿@model MyFirstStore.ViewModels.PreOrder
+@{
+    string borderColor = "";
+    string backgroundColor = "";
+}
+
+<div class="buyBasket">
+    @if (Model.ProductInBasket != null && Model.ProductInBasket.Count > 0)
+    {
+        @foreach (var item in Model.ProductInBasket)
+        {
+            borderColor = $"borderProductBox{item.HEXcolor}";
+            backgroundColor = $"bc{item.HEXcolor}";
+            <div>
+                <div class="basketBox  @borderColor" idBasket="1">
+                    <img src="@item.MainPicturePath" width=100px />
+                    <span class="basketMiniText"> @item.Name</span>
+                    <div>
+                        <span class="price basketMiniText"> @item.Price</span>
+                        <span class="basketMiniText"> р.</span>
+                    </div>
+                    <div class="basketMiniButtons">
+                        <a href="/Home/RemoveProductForBasket?id=@item.Id&all=false" class="miniBuyButton @backgroundColor">-</a>
+                        <div>
+                            <span class="countProduct basketMiniText"> @item.Count</span>
+                            <span class="basketMiniText"> шт.</span>
+                        </div>
+                        <a href="/Home/AddProductToBasket?id=@item.Id" class="miniBuyButton @backgroundColor">+</a>
+                    </div>
+                    <a href="/Home/RemoveProductForBasket?id=@item.Id&all=true" class="bigBuyButton @backgroundColor">Удалить</a>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div class="legendBox">
+    <span> Корзина на </span>
+    <span class="basketCost" value="@Model.BasketCost">@Model.BasketCost</span>
+    <span> руб. </span>
+    <br />
+    <span class="c138a1b">Зеленые</span> позиции есть в наличии, <span class="cede211">желтые</span> - под заказ, <span class="ced1111">красные</span> - в данном кол-ве нет возможности их купить\заказать
+</div>
+<div class="legendBox">
+    @if (Model.Approve)
+    {
+        <span>Дата к которой будет готов заказ: @Model.OrderDate.ToShortDateString()</span>
+        <form method="post">
+            <input type="submit" class="issueButton" value="ОФОРМИТЬ!" />
+        </form>
+    }
+    else
+    {
+        <span>Нет возможности сделать такой заказ - уберите позиции, выделенные красным</span>
+    }
+</div>

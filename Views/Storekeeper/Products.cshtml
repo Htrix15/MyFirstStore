@@ -1,0 +1,56 @@
+﻿@model MyFirstStore.ViewModels.ProductCardForEditAndFilters;
+<search controller="Storekeeper" action="Products" filters="@Model.Filters" search-enum-array="@Model.SearchEnumArray" reset="true"/>
+<sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+<filter-value filters="@Model.Filters" filter-desc="Тип" controller="Storekeeper"  action="Products"/>
+<div class="editBox">
+    <table>
+        <thead class="labelWidth tableStyle"> 
+            <tr>
+                <td>Id</td>
+                <td>Название</td>
+                <td>Цена</td>
+                <td>Цена по скидке</td>
+                <td>Кол-во на складе</td>
+                <td>Дней доставки</td>
+                <td>Кол-во под заказ</td>
+                <td>Скидка</td>
+                <td>Можно под заказ</td>
+                <td>Тип</td>
+                <td>Тип родителя</td>
+            </tr> 
+        </thead>
+        @foreach (var item in Model.ProductCards)
+        {
+            <tr class="labelWidth  tableStyle">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.SalePrice</td>
+                <td>@item.CountToStore</td>
+                <td>@item.DeliveryToStoreDay</td>
+                <td>@item.AvailableMaxCountOnRequest</td>
+                <td>@item.Sale</td>
+                <td>@item.AvailableOnRequest</td>
+                <td>@item.ProductTypeName</td>
+                <td>@item.ParentTypeName</td>
+                <td>
+                    <form asp-controller="Storekeeper" asp-action="Edit" method="get">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <input type="hidden" name="Name" value="@item.Name" />
+                        <input type="hidden" name="Price" value="@item.Price.ToString().Replace(',','.')" />
+                        <input type="hidden" name="SalePrice" value="@item.SalePrice.ToString().Replace(',','.')" />
+                        <input type="hidden" name="CountToStore" value="@item.CountToStore" />
+                        <input type="hidden" name="DeliveryToStoreDay" value="@item.DeliveryToStoreDay" />
+                        <input type="hidden" name="AvailableMaxCountOnRequest" value="@item.AvailableMaxCountOnRequest" />
+                        <input type="hidden" name="ProductTypeName" value="@item.ProductTypeName" />
+                        <input type="hidden" name="ParentTypeName" value="@item.ParentTypeName" />
+                        <input type="hidden" name="Sale" value="@(item.Sale?"true":"false") " />
+                        <input type="hidden" name="AvailableOnRequest" value="@(item.AvailableOnRequest?"true":"false")" />
+                        <input class="editButton" type="submit" value="Редактировать" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+    <pagination filters="@Model.Filters" />

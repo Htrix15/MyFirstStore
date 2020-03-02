@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyFirstStore</title>
+    <link rel="stylesheet" href="~/css/HeaderStyles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ProductsTypesBoxs.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ProductBox.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backColor/backColorCSS.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Basket.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/BuySteps.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Search.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/SortButtons.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Filters.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Pagination.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Visibility.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/AboutProduct.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Edit.css" asp-append-version="true" />
+    <script src="@Url.Content("~/js/jquery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/BasketScripts.js")" type="text/javascript" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/LoadAndVisable.js")" type="text/javascript" asp-append-version="true"></script>
+</head>
+<body>
+    <div class='header'>
+        <a asp-controller="Home" asp-action="Index" class='headerText'>МЕГАМАГАЗИН</a>
+        <div class='accountButton'>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form method="post" asp-controller="Account" asp-action="Logout" >
+                    <input type="submit" class="linkText" value="Выход @User.Identity.Name" />
+                </form>
+                <a asp-controller="Account" asp-action="Card" class="linkText">Личный кабинет</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login" class="linkText">Вход</a>
+                <a asp-controller="Account" asp-action="Register" class="linkText">Регистрация</a>
+            }
+        </div>
+    </div>
+    @RenderBody()
+</body>
+</html>

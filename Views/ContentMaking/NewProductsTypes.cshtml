@@ -1,0 +1,25 @@
+﻿@model MyFirstStore.ViewModels.ProductsTypesAllAndThis
+
+    <form asp-action="NewProductsTypes" asp-controller="ContentMaking">
+        <div class="editBox">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label name="Name" class="labelWidth">Название типа:</label>
+                <input type="text" class="inputWidth" name="Name" required pattern="[A-Za-z0-9а-яёА-ЯЁ]{3,25}" placeholder="3-25 буквы и цифры" />
+                <span asp-validation-for="ProductType.Name"></span>
+            </div>
+            <div>
+                <label class="labelWidth">Родительски тип:</label>
+                <select class="inputWidth" name="ParentProductTypeId" asp-items="Model.ProductTypes"></select>
+            </div>
+            <div>
+                <label name="HexColor" class="labelWidth">HEX цвет:</label>
+                <input class="inputWidth" type="text" name="HexColor" required pattern="[A-Fa-f0-9]{6}" placeholder="6 символов - цифры и буквы ABCDEF" />
+                <span asp-validation-for="ProductType.HEXColor"></span>
+            </div>
+            <input class="editButton" type="submit" value="Сохранить" />
+        </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsTypesView" asp-controller="ContentMaking">Отмена</a>
+</div>

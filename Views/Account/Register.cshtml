@@ -1,0 +1,30 @@
+﻿@model MyFirstStore.ViewModels.UserRegister
+<span class="text">Регистрация нового пользователя</span>
+<form method="post" asp-controller="Account" asp-action="Register">
+    <div class="editBox">
+        <div>
+            <label asp-for="Name" class="labelWidth">Имя</label>
+            <input asp-for="Name" class="inputWidth" pattern="[A-Za-z0-9]{3,25}" placeholder="3-25 только латиница и цифры" />
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div>
+            <label asp-for="Email" class="labelWidth"></label>
+            <input asp-for="Email" class="inputWidth" required placeholder="XXX@@XXX.XXX" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="Password" class="labelWidth">Пароль</label>
+            <input asp-for="Password" class="inputWidth" required pattern="[A-Za-z0-9!@@#$%^&*]{5,25}" placeholder="5-25 букв, цифр, символов" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="PasswordConfirm" class="labelWidth">Повторите пароль</label>
+            <input asp-for="PasswordConfirm" class="inputWidth" required placeholder="5-25 латинские буквы, цифры, символов" />
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+
+        <input type="hidden" name="OrderId" value="@Model?.OrderId" />
+        <input type="submit" class="editButton" value="Регистрация" />
+    </div>
+</form>

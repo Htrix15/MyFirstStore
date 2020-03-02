@@ -1,0 +1,82 @@
+﻿@model MyFirstStore.ViewModels.UserCardAndFilters
+
+<span class="aboutUserBox">Имя:  @Model.Name </span>
+<br />
+<span class="aboutUserBox">Email: @Model.Email </span>
+
+<div class="aboutUserBox">
+    <span>Редактировать учетку: </span>
+    <a asp-action="Edit" asp-controller="Account" class="accountEditButton">Изменить данные</a>
+    <a asp-action="ChangePassword" asp-controller="Account" class="accountEditButton">Сменить пароль</a>
+    <a asp-action="Delete" asp-controller="Account" class="accountEditButton">Удалить учетку</a>
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="aboutUserBox">
+        <span>Просмотр и редактирование: </span>
+        <a asp-controller="Admin" asp-action="UsersView" class="accountEditButton">Пользователи</a>
+        <a asp-controller="Storekeeper" asp-action="Index" class="accountEditButton">Заказы и товары</a>
+        <a asp-controller="ContentMaking" asp-action="Index" class="accountEditButton">Редактор контента</a>
+    </div>
+}
+else
+{
+    <div class="aboutUserBox">
+        <span>Просмотр и редактирвоание: </span>
+        @if (User.IsInRole("Storekeeper"))
+        {
+            <a asp-controller="Storekeeper" asp-action="Index" class="accountEditButton">Заказы и товары</a>
+        }
+        else
+        {
+            if (User.IsInRole("ContentManager"))
+            {
+                <a asp-controller="ContentMaking" asp-action="Index" class="accountEditButton">Редактор контента</a>
+            }
+        }
+    </div>
+}
+<br />
+@if (Model.Orders != null)
+{
+    <sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+    <filter-value filters="@Model.Filters" filter-desc="Статус" controller="Account" action="Card" />
+
+    <div class="orderBox">
+        <div>Номер</div><div>Статус</div><div>Стоимость</div><div>Дата резерва</div><div>Детали</div>
+    </div>
+    @for (int i = 0; i < Model.Orders.Count; i++)
+    {
+        <div class="orderBox">
+            <div>@Model.Orders[i].Id</div>
+            <div>@Model.Orders[i].StatusName</div>
+            <div>@Model.Orders[i].TotalFixCost р.</div>
+            <div>@Model.Orders[i].DataReservation.ToShortDateString()</div>
+            <div><button class="accountEditButton visableOrder">V</button></div>
+        </div>
+        <div class="orderPositions visibilityOFF" value="1">
+            <div class="orderPositionBox ">
+                <div></div><div>Название</div><div>Тип</div><div>Цена</div><div>Кол-во</div><div></div>
+            </div>
+            @{var orderPositions = Model.OrderPositions.Where(u => u.OrderId == @Model.Orders[i].Id).ToList();
+                foreach (var item in orderPositions)
+                {
+                    <div class="orderPositionBox">
+                        <div><img src=@item.MainPicturePath width=50px /></div>
+                        <div>@item.ProductName</div>
+                        <div>@item.ProductTypeName</div>
+                        <div>@item.FixPrice</div>
+                        <div>@item.Count</div>
+                        <div><a asp-controller="Home" asp-action="AboutToProduct" asp-route-id=@item.ProductId asp-route-CurrentPosition=@Model.Orders[i].CurrentPosition class="accountEditButton">О товаре</a></div>
+                    </div>
+                }
+            }
+        </div>
+    }
+
+    <div class="newPositions"></div>
+    <load-new-value filters="@Model.Filters" class-name="loadOrders" />
+    <pagination filters="@Model.Filters" />
+}
+

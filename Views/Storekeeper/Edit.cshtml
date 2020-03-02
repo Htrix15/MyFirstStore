@@ -1,0 +1,40 @@
+﻿@model MyFirstStore.ViewModels.ProductCardForEdit
+
+    <div class="editBox">
+        <form asp-controller="Storekeeper" asp-action="Edit" method="post">
+            <div asp-validation-summary="All"></div>
+
+            <span class="labelWidth"> ID: @Model.Id Название: @Model.Name Тип: @Model.ParentTypeName - @Model.ProductTypeName</span><br />
+
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div>
+                <label name="Price" class="labelWidth">Цена</label>
+                <input type="text" class="inputWidth" name="Price" pattern="^[0-9]*[,]?[0-9]+$" required placeholder="дробные через запятую" value=@Model.Price /><br />
+            </div>
+            <div>
+                <label name="Sale" class="labelWidth">Скидка</label>
+                <input type="checkbox" name="Sale" value="true" @(Model.Sale ? "checked=\"checked\"" : "") /><br />
+            </div>
+            <div>
+                <label name="SalePrice" class="labelWidth">Цена по скидке</label>
+                <input type="text" class="inputWidth" name="SalePrice" pattern="^[0-9]*[,]?[0-9]+$" required placeholder="дробные через запятую" value="@Model.SalePrice" /><br />
+            </div>
+            <div>
+                <label name="CountToStore" class="labelWidth">Кол-во на складе шт.</label>
+                <input type="text" class="inputWidth" name="CountToStore" pattern="^[0-9]+$" required placeholder="Целое число" value="@Model.CountToStore" /><br />
+            </div>
+            <div>
+                <label name="DeliveryToStoreDay" class="labelWidth">Дней доставки до склада</label>
+                <input type="text" class="inputWidth" name="DeliveryToStoreDay" pattern="^[0-9]+$" required placeholder="Целое число" value="@Model.DeliveryToStoreDay" /><br />
+            </div>
+            <div>
+                <label name="AvailableOnRequest" class="labelWidth">Можно под заказ</label>
+                <input type="checkbox" name="AvailableOnRequest" value="true" @(Model.AvailableOnRequest ? "checked=\"checked\"" : "") /><br />
+            </div>
+            <div>
+                <label name="AvailableMaxCountOnRequest" class="labelWidth">Можно заказать шт.</label>
+                <input type="text"class="inputWidth" name="AvailableMaxCountOnRequest" pattern="^[0-9]+$" required placeholder="Целое число" value="@Model.AvailableMaxCountOnRequest" /><br />
+            </div>
+                <input class="editButton" type="submit" value="Обновить" />
+        </form>
+    </div>

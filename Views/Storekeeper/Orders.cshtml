@@ -1,0 +1,98 @@
+﻿@model MyFirstStore.ViewModels.UserOrdersAndFilters
+<search controller="Storekeeper" action="Orders" filters="@Model.Filters" search-enum-array="@Model.SearchEnumArray" reset="true" />
+
+@if (Model.OrderMiniAndUserCardMini?.Count > 0)
+{
+<sort-buttons filters="@Model.Filters" sort-enum-array="@Model.SortEnumArray" />
+<filter-value filters="@Model.Filters" filter-desc="Статус"  controller="Storekeeper" action="Orders"/>
+<div class="editBox">
+    <table>
+        <thead class="labelWidth tableStyle">
+            <tr>
+                <td>Id</td>
+                <td>Имя заказчика</td>
+                <td>Email</td>
+                <td>Статус</td>
+                <td>Дата резерва</td>
+                <td>Стоимость</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.OrderMiniAndUserCardMini)
+        {
+            <tr class="labelWidth  tableStyle">
+                <td>@item.Id</td>
+                <td>@item.UserInfo.Name</td>
+                <td>@item.UserInfo.Email</td>
+                <td>@item.StatusName</td>
+                <td>@item.DataReservation.ToShortDateString()</td>
+                <td>@item.TotalFixCost</td>
+                <td>
+                    @if (item.StatusId == 1)
+                    {
+                        <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                            <input type="hidden" name="IdOrder" value="@item.Id" />
+                            <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                            <input type="hidden" name="IdNewStatus" value="2" />
+                            <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                            <input type="hidden" name="NewStatus" value="Поставлен" />
+                            <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                            <input type="submit" class="editButton" value="Поставить" />
+                        </form>
+                        <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                            <input type="hidden" name="IdOrder" value="@item.Id" />
+                            <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                            <input type="hidden" name="IdNewStatus" value="3" />
+                            <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                            <input type="hidden" name="NewStatus" value="Выдан" />
+                            <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                            <input type="submit" class="editButton" value="Выдан" />
+                        </form>
+                        <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                            <input type="hidden" name="IdOrder" value="@item.Id" />
+                            <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                            <input type="hidden" name="IdNewStatus" value="4" />
+                            <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                            <input type="hidden" name="NewStatus" value="Отменен" />
+                            <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                            <input type="submit" class="editButton" value="Отменен" />
+                        </form>
+                    }
+                    @if (item.StatusId == 2)
+                    {
+                        <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                            <input type="hidden" name="IdOrder" value="@item.Id" />
+                            <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                            <input type="hidden" name="IdNewStatus" value="3" />
+                            <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                            <input type="hidden" name="NewStatus" value="Выдан" />
+                            <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                            <input type="submit" class="editButton" value="Выдан" />
+                        </form>
+                        <form asp-controller="Storekeeper" asp-action="UpdateStatus" method="get">
+                            <input type="hidden" name="IdOrder" value="@item.Id" />
+                            <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                            <input type="hidden" name="IdNewStatus" value="4" />
+                            <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                            <input type="hidden" name="NewStatus" value="Отменен" />
+                            <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                            <input type="submit" class="editButton" value="Отменен" />
+                        </form>
+                    }
+                </td>
+                <td>
+                    <form asp-controller="Storekeeper" asp-action="AboutOrder" method="get">
+                        <input type="hidden" name="IdOrder" value="@item.Id" />
+                        <input type="hidden" name="IdOldStatus" value="@item.StatusId" />
+                        <input type="hidden" name="OldStatus" value="@item.StatusName" />
+                        <input type="hidden" name="CurrentPosition" value="@item.CurrentPosition" />
+                        <input type="submit" class="editButton" value="О заказе" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    </div>
+    <pagination filters="@Model.Filters" />
+}

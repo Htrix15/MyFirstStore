@@ -1,0 +1,17 @@
+﻿@model MyFirstStore.Models.ProductsAttribute
+
+<form asp-action="EditProductsAttribute" asp-controller="ContentMaking" asp-route-id="@Model.Id">
+    <div class="editBox">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Name" class="labelWidth">Название атрибута:</label>
+            @Html.HiddenFor(model => model.RowVersion)
+            <input type="text" asp-for="Name" class="inputWidth" required pattern="[A-Za-z0-9а-яёА-ЯЁ ]{3,25}" placeholder="3-25 буквы и цифры" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <input type="submit" class="editButton" value="Сохранить" />
+    </div>
+</form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductAttributesView" asp-controller="ContentMaking">Отмена</a>
+</div>

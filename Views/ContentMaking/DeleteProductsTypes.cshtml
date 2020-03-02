@@ -1,0 +1,12 @@
+﻿@model MyFirstStore.ViewModels.ProductsTypesAllAndThis
+    <form asp-action="DeleteProductsTypes" asp-controller="ContentMaking">
+        <div class="editBox">
+            <div>
+                <span class="labelWidth">Название типа: @Model.ProductType.Name</span>
+                <input class="editButton" type="submit" value="Удалить!" />
+            </div>
+         </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductsTypesView" asp-controller="ContentMaking">Отмена</a>
+</div>

@@ -1,0 +1,18 @@
+﻿@model MyFirstStore.ViewModels.UserForEdit
+    <form asp-action="Edit" asp-controller="Admin">
+
+        <div class="editBox">
+            <input type="hidden" asp-for="Id" />
+            <div>
+                <label asp-for="Name" class="labelWidth">Name</label>
+                <input type="text" class="inputWidth" asp-for="Name" required pattern="[A-Za-z0-9]{3,25}" placeholder="3-25 только латиница и цифры" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Email" class="labelWidth">Email</label>
+                <input type="text" class="inputWidth" asp-for="Email" required placeholder="XXX@@XXX.XXX" />
+                <span asp-validation-for="Email"></span>
+            </div>
+        </div>
+            <input type="submit" class="editButton" value="Сохранить" />
+    </form>

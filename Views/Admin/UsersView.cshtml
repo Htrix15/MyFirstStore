@@ -1,0 +1,21 @@
+﻿@model MyFirstStore.ViewModels.UsersBaseInfoAndFilters
+<sort-buttons filters="@Model.Filters"  sort-enum-array="@Model.SortEnumArray"/>
+<filter-value filters="@Model.Filters" filter-desc="Роль" controller="Admin" action="UsersView"/>
+<div class="editBox">
+    <table >
+        <thead class="labelWidth tableStyle"> <tr><td>Имя</td><td>E-mail</td><td>Роли</td><td></td><td></td><td></td><td></td></tr> </thead>
+        @foreach (var item in Model.UserBaseInfos)
+        {
+            <tr class="labelWidth  tableStyle">
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.AllRoles</td>
+                <td><a class="editButton" asp-action="Edit" asp-controller="Admin" asp-route-id="@item.Id" asp-route-currentPosition="@item.CurrentPosition">Редактировать</a></td>
+                <td><a class="editButton" asp-action="SetRoles" asp-controller="Admin" asp-route-id="@item.Id" asp-route-currentPosition="@item.CurrentPosition">Задать роли</a></td>
+                <td><a class="editButton" asp-action="DroppingPassword" asp-controller="Admin" asp-route-id="@item.Name" asp-route-currentPosition="@item.CurrentPosition">Сбросить пароль</a></td>
+                <td><a class="editButton" asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Name" asp-route-currentPosition="@item.CurrentPosition">Удалить</a></td>
+            </tr>
+        }
+    </table>
+</div>
+<pagination filters="@Model.Filters" />

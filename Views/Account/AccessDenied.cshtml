@@ -1,0 +1,5 @@
+﻿@model string
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="text">@User.Identity.Name! тебе нельзя заходить по ссылке @Model</span>
+}

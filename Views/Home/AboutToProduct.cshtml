@@ -1,0 +1,62 @@
+﻿@model MyFirstStore.ViewModels.BigProductCardAndBasket
+@{
+    string borderColor = $"borderProductBox{Model.BigProductCard.HexColor}";
+    string backgroundColor = $"bc{Model.BigProductCard.HexColor}";
+    string parentBackgroundColor = $"bc{Model.BigProductCard.ParentProductTypeHEXColor}";
+    ViewData["Title"] = Model.BigProductCard.Name;
+}
+ 
+<div class="basketHead">
+    <div class="basketButton">
+        <span class="basketHeadText"> Корзина на </span>
+        <span class="basketCost basketHeadText" value="@Model.BasketCost">@Model.BasketCost</span>
+        <span class="basketHeadText"> руб.</span>
+    </div>
+    <div class="basketHeadButton">
+        <input type="button" class="visableBasket linkText" value="Просмотр" />
+        <form action="/home/BuyStep1" method="get">
+            <input type="submit" class="linkText" value="Оформить" />
+        </form>
+        <input type="button" class="DelBasket linkText" value="Очистить" />
+    </div>
+</div>
+<product-list-basket product-in-baskets="@Model.ProductsInBasket" />
+<div class="navigation">
+    <a href="/Home/ProductsList?select=@Model.BigProductCard.ParentTypeId" class="productNavigation @parentBackgroundColor">@Model.BigProductCard.ParentTypeName</a>
+    <a href="/Home/ProductsList?select=@Model.BigProductCard.ProductTypeId" class="productNavigation @backgroundColor">@Model.BigProductCard.ProductTypeName</a>
+</div>
+<div class="aboutProduct @borderColor">
+    <div class="leftPanel">
+        <img src="@Model.BigProductCard.MainPicturePath" class="imgProduct">
+        <span class="textDescription">@Model.BigProductCard.Description</span>
+    </div>
+    <div class="rightPanel">
+        <span class="textName">@Model.BigProductCard.Name</span>
+        <span class="textPrice">@Model.BigProductCard.Price р.</span>
+
+        <form>
+            <input type="hidden" name="id" value="@Model.BigProductCard.Id" />
+            <input type="hidden" name="price" value="@Model.BigProductCard.Price" />
+            <input type="hidden" name="name" value="@Model.BigProductCard.Name" />
+            <input type="hidden" name="color" value="@Model.BigProductCard.HexColor" />
+            <input type="hidden" name="picturePath" value="@Model.BigProductCard.MainPicturePath" />
+            <input type="button" class="inBasket productButtonBuy @backgroundColor" value="В корзину" />
+        </form>
+        <form action="/home/BuyOneClick">
+            <input type="hidden" name="id" value=@Model.BigProductCard.Id />
+            <input type="submit" class="productButtonBuy @backgroundColor" value="Купить!" />
+        </form>
+        <div>
+            @foreach (var item in Model.BigProductCard.PicturesPaths)
+            {
+                <img src="@item" class="miniImgProduct">
+            }
+        </div>
+        <div class="propertiesBox">
+            @foreach (var item in Model.BigProductCard.AttributesToProduct)
+            {
+                <span class="textProperties"> @item.Key - @item.Value </span>
+            }
+        </div>
+    </div>
+</div>

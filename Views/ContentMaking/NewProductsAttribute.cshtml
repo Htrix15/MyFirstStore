@@ -1,0 +1,16 @@
+﻿@model MyFirstStore.Models.ProductsAttribute
+
+    <form asp-action="NewProductsAttribute" asp-controller="ContentMaking">
+        <div class="editBox">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="Name" class="labelWidth">Название атрибута:</label>
+                <input type="text" class="inputWidth" asp-for="Name" required pattern="[A-Za-z0-9а-яёА-ЯЁ ]{3,25}" placeholder="3-25 буквы и цифры" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <input type="submit" class="editButton" value="Сохранить" />
+        </div>
+    </form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductAttributesView" asp-controller="ContentMaking">Отмена</a>
+</div>

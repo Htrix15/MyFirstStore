@@ -1,0 +1,13 @@
+﻿@model List<MyFirstStore.Models.ProductsPicturesPath>;
+
+    <form asp-action="EditPicturesToProduct" asp-controller="ContentMaking" method="post" enctype="multipart/form-data">
+        <div class="editBox">
+            <table class="labelWidth  tableStyle">
+                <thead><tr><td>Текущии картинки</td><td>Выберете новые</td></tr></thead>
+                <tr><td><img src=@Model[0]?.PicturePath width=100px /></td><td><input type="file" name="uploadedFiles1" accept="image/jpeg,image/png" /></td></tr>
+                <tr><td><img src=@Model[1]?.PicturePath width=100px /></td><td><input type="file" name="uploadedFiles2" accept="image/jpeg,image/png" /></td></tr>
+                <tr><td><img src=@Model[2]?.PicturePath width=100px /></td><td><input type="file" name="uploadedFiles3" accept="image/jpeg,image/png" /></td></tr>
+            </table>
+        </div>
+            <input class="editButton" type="submit" value="Сохранить" />
+    </form>

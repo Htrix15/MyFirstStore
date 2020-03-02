@@ -1,0 +1,13 @@
+﻿@model MyFirstStore.Models.ProductsAttribute
+<form asp-action="DeleteProductsAttribute" asp-controller="ContentMaking" asp-route-id="@Model.Id">
+    <div class="editBox">
+        <div>
+            <span class="labelWidth">Название атрибута: @Model.Name</span>
+            @Html.HiddenFor(model => model.RowVersion)
+            <input type="submit" class="editButton" value="Удалить!" />
+        </div>
+    </div>
+</form>
+<div class="editBox">
+    <a class="editButton" asp-action="ProductAttributesView" asp-controller="ContentMaking">Отмена</a>
+</div>
