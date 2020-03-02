@@ -1,0 +1,19 @@
+﻿public enum ProductListContentSort
+{
+    IdAsc,
+    IdDesc,
+    НазваниеAsc,
+    НазваниеDesc,
+    ЦенаAsc,
+    ЦенаDesc,
+    Цена_по_скидкеAsc,
+    Цена_по_скидкеDesc,
+    СкидкаAsc,
+    СкидкаDesc,
+    ТипAsc,
+    ТипDesc,
+    Шт_на_складеAsc,
+    Шт_на_складеDesc,
+    Дней_доставки_до_складаAsc,
+    Дней_доставки_до_складаDesc
+}
