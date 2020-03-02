@@ -1,0 +1,107 @@
+﻿.buyBasket {
+    margin: 10px;
+    padding: 5px;
+    border: 4px solid #383838;
+    display: flex;
+    overflow: auto
+}
+.miniBuyButton {
+    border: 0;
+    color: #e3e4e5;
+    width: 35px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    text-decoration: none;
+}
+.bigBuyButton {
+    border: 0;
+    color: #e3e4e5;
+    width: 80px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    text-decoration: none;
+}
+
+.bigBuyButton:hover {
+    transform: scale(1.08);
+    background: grey;
+}
+
+.miniBuyButton:hover {
+    transform: scale(1.08);
+    background: grey;
+}
+
+.bc138a1b {
+    background: #138a1b;
+}
+.bcede211 {
+    background: #ede211;
+}
+.bced1111 {
+    background: #ed1111;
+}
+
+.c138a1b {
+    color: #138a1b;
+}
+
+.cede211 {
+    color: #ede211;
+}
+
+.ced1111 {
+    color: #ed1111;
+}
+
+.borderProductBox138a1b {
+    border: 3px solid #138a1b;
+}
+.borderProductBoxede211 {
+    border: 3px solid #ede211;
+}
+.borderProductBoxed1111 {
+    border: 3px solid #ed1111;
+}
+
+.legendBox {
+    margin: 10px;
+    padding: 5px;
+    /*border: 4px solid #383838;*/ 
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+.bigTextNOrder {
+    font-size: 22pt;
+}
+.issueButton {
+    width: 250px;
+    height: 30px;
+    background: #383838;
+    border: 0;
+    color: #e3e4e5;
+    margin: 2px;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Arial;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.1s all;
+}
+
+.issueButton:hover {
+    transform: scale(1.08);
+    background: grey;
+}

@@ -1,0 +1,108 @@
+﻿.imgProduct {
+    width: 80%;
+    padding: 10px;
+}
+
+.miniImgProduct {
+    width: 25%;
+    padding: 10px;
+}
+
+.textName {
+    font-size: 22pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.textPrice {
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.textDescription {
+    padding: 10px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    text-align: justify;
+}
+
+.aboutProduct {
+    display: flex;
+    margin: 10px;
+}
+
+.leftPanel {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.rightPanel {
+    width: 40%;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.propertiesBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.textProperties {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    text-align: justify;
+}
+
+.productButtonBuy {
+    font-weight: bold;
+    font-family: Arial;
+    width: 98%;
+    height: 30px;
+    margin: 3px;
+    border: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    cursor: pointer;
+}
+
+.productButtonBuy:hover {
+    transform: translate(-10px) scale(1.08);
+    background: grey;
+}
+
+.navigation {
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.productNavigation {
+    font-size: 10pt;
+    font-weight: bold;
+    font-family: Arial;
+    width: 150px;
+    height: 30px;
+    border: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    text-decoration: none;
+}
+
+.productNavigation:hover {
+        transform: scale(1.08);
+        background: grey;
+}

@@ -1,0 +1,96 @@
+﻿.productBox {
+    height: 150px;
+    display: flex;
+    margin: 10px;
+}
+
+.productType {
+    border: 0px;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    transition: 0.1s all;
+    color: white;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+
+.image {
+    width: 140px;
+    padding: 10px;
+}
+
+.textsBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.textBig {
+    font-size: 22pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.textSmile {
+    font-size: 12pt;
+    font-family: Arial;
+}
+
+
+.buttonBox {
+    width: 260px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: flex-end;
+}
+
+.buttonOther {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+    border: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    text-decoration: none;
+}
+
+.buttonBuy {
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    width: 250px;
+    height: 65px;
+    border: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    text-decoration: none;
+}
+
+.buttonOther:hover {
+    transform: translate(-5px) scale(1.08);
+    background: grey;
+}
+
+.buttonBuy:hover {
+    transform: translate(-10px) scale(1.08);
+    background: grey;
+}

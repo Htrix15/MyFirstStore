@@ -1,0 +1,44 @@
+﻿.filterBox {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filterText {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    color: #383838;
+}
+
+.filterMiniText {
+    font-size: 10pt;
+    font-weight: bold;
+    font-family: Arial;
+    color: #383838;
+}
+
+.filterButton {
+    background: #383838;
+    border: 0;
+    color: #e3e4e5;
+    margin: 2px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    transition: 0.1s all;
+}
+.filterButton:hover {
+    transform: scale(1.08);
+    background: grey;
+}
+
+.inputStyle {
+    width: 150px;
+    color: #383838;
+    font-size: 10pt;
+    font-weight: bold;
+    font-family: Arial;
+}

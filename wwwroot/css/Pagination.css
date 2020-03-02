@@ -1,0 +1,49 @@
+﻿.paginationBox {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.paginationButton {
+    background: #383838;
+    border: 0;
+    color: #e3e4e5;
+    margin: 2px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    transition: 0.1s all;
+}
+.paginationButton:hover {
+    transform: scale(1.08);
+    background: grey;
+}
+
+.paginationButtonDisable {
+    background: #e3e4e5;
+    border: 0;
+    color: #383838;
+    margin: 2px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+.loadNewValue {
+    width: 250px;
+    height: 30px;
+    background: #383838;
+    border: 0;
+    color: #e3e4e5;
+    margin: 2px;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    transition: 0.1s all;
+}
+.loadNewValue:hover 
+{
+    transform: scale(1.08);
+    background: grey;
+}

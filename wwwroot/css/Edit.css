@@ -1,0 +1,52 @@
+﻿.editBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    padding:10px;
+}
+.text {
+    color: #383838;
+    padding: 10px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+.tableStyle
+{
+    text-align:center;
+}
+.labelWidth {
+
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+.inputWidth {
+    margin: 10px;
+    width: 400px;
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+.editButton {
+    background: #383838;
+    border: 0;
+    margin: 5px;
+    padding: 0px 5px;
+    color: #e3e4e5;
+    width: 200px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    text-align:center;
+    text-decoration: none;
+    transition: 0.1s all;
+}
+
+    .editButton:hover {
+        transform:  scale(1.08);
+        background: grey;
+    }

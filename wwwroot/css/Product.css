@@ -1,0 +1,68 @@
+﻿.productHeadBox {
+   // border: 3px solid grey;
+    border-bottom: 0px;
+    width: 80%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+}
+
+.buttonBuyBig {
+    width: 35%;
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    
+}
+
+.productName {
+    font-size: 350%;
+    width: 45%;
+    height: 60px;
+}
+
+.productPrice {
+    font-size: 250%;
+    width: 45%;
+    height: 60px;
+}
+
+.miniImg {
+    width: 45%;
+    height: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productTextBox {
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid grey;
+    border-top: 0px;
+    width: 80%;
+    height: 400px;
+    padding: 5px;
+}
+
+.description {
+    border: 3px solid grey;
+    width: 350px;
+    height: 98%
+}
+
+.passe-partout {
+    border: 3px solid grey;
+}
+
+.buttonBuyBig:hover {
+    transform: translate(-10px) scale(1.08);
+    background: grey;
+}

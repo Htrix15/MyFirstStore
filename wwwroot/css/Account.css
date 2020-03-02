@@ -1,0 +1,61 @@
+﻿.aboutUserBox {
+    margin: 10px;
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.orderBox {
+    border: 3px solid #383838;
+    width: 500px;
+    margin: 10px;
+    margin-bottom: 0px;
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.orderBox * {     
+    width: 100px;
+}
+
+.orderPositionBox {
+    border: 3px solid #383838;
+    width: 600px;
+    margin: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #383838;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+    .orderPositionBox * {
+        width: 100px;
+    }
+
+.accountEditButton {
+    background: #383838;
+    border: 0;
+    color: #e3e4e5;
+    margin: 2px;
+    padding: 2px;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.1s all;
+}
+    .accountEditButton:hover {
+        transform: translate(-5px) scale(1.08);
+        background: grey;
+    }

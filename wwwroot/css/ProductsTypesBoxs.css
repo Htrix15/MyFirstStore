@@ -1,0 +1,80 @@
+﻿.allpanel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin: 10px;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}
+
+.productTypeBox {
+    width: 350px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 3px;
+}
+
+.mainProductType {
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+    margin: 3px;
+    transition: 0.1s all;
+    color: white;
+    border: 0px;
+}
+
+.mainSingleProductType {
+    margin: 3px 12px 3px 3px;
+    height: 100%;
+    transition: 0.1s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 0px;
+}
+
+.subProductType {
+    width: 80%;
+    flex-grow: 1;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s all;
+    color: white;
+    border: 0px;
+}
+
+.subProductType:hover {
+    transform: translate(10px) scale(1.08);
+    background: grey;
+}
+
+.mainProductType:hover {
+    transform: translate(-2.5px) scale(1.1) rotate(180deg);
+    background: grey;
+}
+
+.mainSingleProductType:hover {
+    transform: translate(10px) scale(1.08);
+    background: grey;
+}
+
+.bcDefaultColor {
+    background: #4a4a48;
+}
+
+.fontPdosuctTypeStyle {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Arial;
+    text-decoration: none;
+}

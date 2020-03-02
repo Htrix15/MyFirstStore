@@ -1,0 +1,36 @@
+﻿.header {
+    background: #383838;
+    margin: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accountButton {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerText {
+    color: #e3e4e5;
+    font-size: 25pt;
+    font-weight: bold;
+    margin: 10px;
+    font-family: Arial;
+    text-decoration: none;
+}
+
+.linkText {
+    color: #e3e4e5;
+    border: 0;
+    padding-left: 0px;
+    margin-right: 5px;
+    background: none;
+    text-decoration: underline;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 10pt;
+    cursor: pointer;
+}
