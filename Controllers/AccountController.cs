@@ -106,7 +106,6 @@ namespace MyFirstStore.Controllers
                 var result = await _dataProcessingConveyor.LoginUserAsync(userLoginInfo);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
                     if (!string.IsNullOrEmpty(userLoginInfo.ReturnUrl) && Url.IsLocalUrl(userLoginInfo.ReturnUrl))
                     {
                         return Redirect(userLoginInfo.ReturnUrl);
